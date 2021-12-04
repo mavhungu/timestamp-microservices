@@ -20,4 +20,4 @@ $ npm install
 </div>
 
 ## Author
-* **Mavhungu Ronewa** - *Initial Work* - [U+1F310](https://ronewam.netlify.app)
+* **Mavhungu Ronewa** - *Initial Work* - [🌐](https://ronewam.netlify.app)
