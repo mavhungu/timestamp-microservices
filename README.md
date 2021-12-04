@@ -1,6 +1,15 @@
 # Timestamp-microservices
 
-## 
+## Getting Started
+
+### Prerequisites
+```
+1. NodeJS
+```
+### Installation
+```
+$ npm install
+```
 
 ## Language and tools used :
 <div class="center">
