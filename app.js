@@ -11,6 +11,10 @@ app.set('view engine', 'hbs')
 app.set('views',path.join(__dirname,'templates/views'))
 hbs.registerPartial(path.join(__dirname,'templates/partials'))
 
+app.use(express.json())
+app.use(express.urlencoded({extended: false}))
+app.use(express.static(path.join(__dirname,'public')))
+
 app.get('/',home)
 app.get('/api/timestamp', timestampRouter)
 app.get('/api/timestamp:date',timestampDateRouter)
