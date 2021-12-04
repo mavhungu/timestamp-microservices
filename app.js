@@ -22,5 +22,5 @@ app.get('/api/timestamp:date',timestampDateRouter)
 
 
 app.listen(port,()=>{
-    console.log(`Server is running at port ${port}`)
+    console.log(`Server is running on port ${port}`)
 })
