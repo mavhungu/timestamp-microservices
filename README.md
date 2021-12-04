@@ -2,6 +2,9 @@
 
 ## Getting Started
 
+1. Clone this repo
+2. run `npm install`
+
 ### Prerequisites
 ```
 1. NodeJS
@@ -9,6 +12,7 @@
 ### Installation
 ```
 $ npm install
+$ npm run start / npm run dev
 ```
 
 ## Language and tools used :
