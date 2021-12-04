@@ -25,4 +25,3 @@ $ npm run start / npm run dev
 
 ## Author
 * **Mavhungu Ronewa** - *Initial Work* - [👉🏽 💻](https://ronewam.netlify.app)
->>>>>>> b7a572e6a5f4684d79c9a073a58af168da65c8fc
