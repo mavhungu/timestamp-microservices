@@ -1,24 +1,46 @@
-const express = require('express')
-const app = express()
-const path = require('path')
-const hbs = require('hbs')
-const port = process.env.PORT || 3000
+// server.js
+// where your node app starts
 
-const home = require('./router/home')
-const timestampRouter =  require('./router/timestamp.router')
+// init project
+var express = require('express');
+var app = express();
 
-app.set('view engine', 'hbs')
-app.set('views',path.join(__dirname,'templates/views'))
-hbs.registerPartials(path.join(__dirname,'templates/partials'))
+// enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
+// so that your API is remotely testable by FCC 
+var cors = require('cors');
+app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 204
 
-app.use(express.json())
-app.use(express.urlencoded({extended: false}))
-app.use(express.static(path.join(__dirname,'public')))
+// http://expressjs.com/en/starter/static-files.html
+app.use(express.static('public'));
 
-app.use('/',home)
-app.use('/api',timestampRouter)
+// http://expressjs.com/en/starter/basic-routing.html
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
 
 
-app.listen(port,()=>{
-    console.log(`Server is running on port ${port}`)
+// your first API endpoint... 
+app.get("/api/hello", function (req, res) {
+  res.json({greeting: 'hello API'});
+});
+
+app.get('/api/:date?', (req, res) => {
+    const { date } = req.params;
+    const getResponse = dateObject => ({ unix: dateObject.getTime(), utc: dateObject.toUTCString() });
+    
+    if (date === undefined) res.json(getResponse(new Date()));
+
+    const parseDate = typeof +date === 'number' && !isNaN(+date) ? +date : date;
+    const isValidDate = new Date(parseDate) !== "Invalid Date" && !isNaN(new Date(parseDate));
+
+    if (!isValidDate) res.json({error: "Invalid Date"});
+
+    res.json(getResponse(new Date(parseDate)));
 })
+
+
+
+// listen for requests :)
+var listener = app.listen(process.env.PORT, function () {
+  console.log('Your app is listening on port ' + listener.address().port);
+});
